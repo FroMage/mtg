@@ -1,0 +1,16 @@
+@page {
+ margin-top: 1.4cm;
+ margin-left: 0.9cm;
+ margin-right: 0;
+ margin-bottom: 0;
+}
+html, body {
+ margin: 0;
+ padding: 0;
+}
+img {
+ width: 56mm;
+ border: 1px solid #eee;
+ padding: 1.7mm 1.5mm;
+}
+

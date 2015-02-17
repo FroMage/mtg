@@ -1,0 +1,112 @@
+// cards from arabian http://mtgimage.com/zip/ARN.zip
+// stats from http://www.crystalkeep.com/magic/products/arabiannights.php
+// and http://archive.wizards.com/Magic/Magazine/Article.aspx?x=mtgcom/arcana/155
+// specs from http://archive.wizards.com/magic/generic/cardlists/Arabian_Nights_Checklist.txt
+// - remove artist
+// - s/^(.*?)  +(..)$/{name: "\1", stat: "\2"},/
+// - turn lower-case
+// - replace " (a)" with "1"
+// - replace " (b)" with "2"
+// - replace áúâí with auai
+// - fix a few "'"
+var cards = [
+{name: "cuombajj witches", stat: "c4"},
+{name: "el-hajjaj", stat: "u2"},
+{name: "erg raiders1", stat: "c3"},
+{name: "erg raiders2", stat: "c2"},
+{name: "guardian beast", stat: "u2"},
+{name: "hasran ogress1", stat: "c3"},
+{name: "hasran ogress2", stat: "c2"},
+{name: "junun efreet", stat: "u2"},
+{name: "juzam djinn", stat: "u2"},
+{name: "khabal ghoul", stat: "u3"},
+{name: "oubliette1", stat: "c2"},
+{name: "oubliette2", stat: "c2"},
+{name: "sorceress queen", stat: "u3"},
+{name: "stone-throwing devils1", stat: "c3"},
+{name: "stone-throwing devils2", stat: "c1"},
+{name: "dandan", stat: "c4"},
+{name: "fishliver oil1", stat: "c3"},
+{name: "fishliver oil2", stat: "c1"},
+{name: "flying men", stat: "c5"},
+{name: "giant tortoise1", stat: "c3"},
+{name: "giant tortoise2", stat: "c1"},
+{name: "island fish jasconius", stat: "u2"},
+{name: "merchant ship", stat: "u3"},
+{name: "old man of the sea", stat: "u2"},
+{name: "serendib djinn", stat: "u2"},
+{name: "serendib efreet", stat: "u2"},
+{name: "sindbad", stat: "u3"},
+{name: "unstable mutation", stat: "c5"},
+{name: "cyclone", stat: "u3"},
+{name: "desert twister", stat: "u3"},
+{name: "drop of honey", stat: "u2"},
+{name: "erhnam djinn", stat: "u2"},
+{name: "ghazban ogre", stat: "c4"},
+{name: "ifh-biff efreet", stat: "u2"},
+{name: "metamorphosis", stat: "c4"},
+{name: "nafs asp1", stat: "c3"},
+{name: "nafs asp2", stat: "c2"},
+{name: "sandstorm", stat: "c4"},
+{name: "singing tree", stat: "u2"},
+{name: "wyluli wolf1", stat: "c4"},
+{name: "wyluli wolf2", stat: "c1"},
+{name: "aladdin", stat: "u2"},
+{name: "ali baba", stat: "u3"},
+{name: "ali from cairo", stat: "u2"},
+{name: "bird maiden1", stat: "c2"},
+{name: "bird maiden2", stat: "c2"},
+{name: "desert nomads", stat: "c4"},
+{name: "hurr jackal", stat: "c4"},
+{name: "kird ape", stat: "c5"},
+{name: "magnetic mountain", stat: "u3"},
+{name: "mijae djinn", stat: "u2"},
+{name: "rukh egg1", stat: "c3"},
+{name: "rukh egg2", stat: "c1"},
+{name: "ydwen efreet", stat: "u2"},
+{name: "abu ja'far", stat: "u3"},
+{name: "army of allah1", stat: "c3"},
+{name: "army of allah2", stat: "c1"},
+{name: "camel", stat: "c5"},
+{name: "eye for an eye", stat: "u3"},
+{name: "jihad", stat: "u2"},
+{name: "king suleiman", stat: "u2"},
+{name: "moorish cavalry1", stat: "c4"},
+{name: "moorish cavalry2", stat: "c1"},
+{name: "piety1", stat: "c3"},
+{name: "piety2", stat: "c1"},
+{name: "repentant blacksmith", stat: "u2"},
+{name: "shahrazad", stat: "u2"},
+{name: "war elephant1", stat: "c3"},
+{name: "war elephant2", stat: "c1"},
+{name: "aladdin's lamp", stat: "u2"},
+{name: "aladdin's ring", stat: "u2"},
+{name: "bottle of suleiman", stat: "u2"},
+{name: "brass man", stat: "u3"},
+{name: "city in a bottle", stat: "u2"},
+{name: "dancing scimitar", stat: "u2"},
+{name: "ebony horse", stat: "u2"},
+{name: "flying carpet", stat: "u3"},
+{name: "jandor's ring", stat: "u2"},
+{name: "jandor's saddlebags", stat: "u2"},
+{name: "jeweled bird", stat: "u3"},
+{name: "pyramids", stat: "u2"},
+{name: "ring of ma'ruf", stat: "u2"},
+{name: "sandals of abdallah", stat: "u3"},
+{name: "bazaar of baghdad", stat: "u3"},
+{name: "city of brass", stat: "u3"},
+{name: "desert", stat: "c11"},
+{name: "diamond valley", stat: "u2"},
+{name: "elephant graveyard", stat: "u2"},
+{name: "island of wak-wak", stat: "u2"},
+{name: "library of alexandria", stat: "u3"},
+{name: "mountain", stat: "c1"},
+{name: "oasis", stat: "u4"}
+];
+
+var booster = 8;
+var boosterRare = 0;
+var boosterUncommon = 2;
+var boosterCommon = 6;
+
+var setFolder = "ARN";
