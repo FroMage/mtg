@@ -26,10 +26,12 @@ for (var i = 0; i < cards.length; i++) {
  }
 }
 
-
 function addCard(card){
  var img = jQuery("<img/>");
+ var isBlack = /^(ARN|ATQ)$/.test(setFolder);
  img.attr("src", setFolder + "/" + card.name + ".jpg");
+ if(isBlack)
+  img.toggleClass("black");
  jQuery("body").append(img);
 }
 

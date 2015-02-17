@@ -10,7 +10,11 @@ html, body {
 }
 img {
  width: 56mm;
- border: 1px solid #eee;
+ border: 0.5px solid #eee;
  padding: 1.7mm 1.5mm;
+}
+
+img.black {
+ background: black;
 }
 
