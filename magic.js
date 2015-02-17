@@ -28,10 +28,11 @@ for (var i = 0; i < cards.length; i++) {
 
 function addCard(card){
  var img = jQuery("<img/>");
- var isBlack = /^(ARN|ATQ)$/.test(setFolder);
+ var isBlack = /^(ARN|ATQ|LEG|DRK|FEM)$/.test(setFolder);
  img.attr("src", setFolder + "/" + card.name + ".jpg");
  if(isBlack)
   img.toggleClass("black");
+ img.attr("title", card.name);
  jQuery("body").append(img);
 }
 
