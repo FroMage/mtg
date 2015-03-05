@@ -1,5 +1,5 @@
 @page {
- margin-top: 1.4cm;
+ margin-top: 1.7cm;
  margin-left: 0.9cm;
  margin-right: 0;
  margin-bottom: 0;
@@ -8,13 +8,19 @@ html, body {
  margin: 0;
  padding: 0;
 }
+body {
+ padding-left: 0.5px;
+}
 img {
  width: 56mm;
- border: 0.5px solid #eee;
- padding: 1.7mm 1.5mm;
+ border-top: 1.9mm solid white;
+ border-bottom: 1.9mm solid white;
+ border-left: 1.7mm solid white;
+ border-right: 1.7mm solid white;
+ margin: 0.5px;
 }
 
 img.black {
- background: black;
+ border-color: black;
 }
 

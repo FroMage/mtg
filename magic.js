@@ -7,23 +7,32 @@ function extractRepeats(stat){
 
 var rares = [], uncommons = [], commons = [], lands = [];
 
-// collect cards by type
-for (var i = 0; i < cards.length; i++) {
- var card = cards[i];
- var repeats = extractRepeats(card.stat);
- var destination;
- if(card.stat.indexOf("r") == 0){
-   destination = rares;
- }else if(card.stat.indexOf("u") == 0){
-   destination = uncommons;
- }else if(/^(forest|island|mountain|plains|swamp)\d$/.test(card.name)){
-   destination = lands;
- }else{
-   destination = commons;
+if(typeof cards !== 'undefined'){
+ // collect cards by type
+ for (var i = 0; i < cards.length; i++) {
+  var card = cards[i];
+  var repeats = extractRepeats(card.stat);
+  var destination;
+  if(card.stat.indexOf("r") == 0){
+    destination = rares;
+  }else if(card.stat.indexOf("u") == 0){
+    destination = uncommons;
+  }else if(/^(forest|island|mountain|plains|swamp)\d$/.test(card.name)){
+    destination = lands;
+  }else{
+    destination = commons;
+  }
+  for (var r = 0; r < repeats; r++) {
+    destination.push(card);
+  }
  }
- for (var r = 0; r < repeats; r++) {
-   destination.push(card);
- }
+}
+
+function addBack(){
+ var img = jQuery("<img/>");
+ img.attr("src", "cardback.jpg");
+ img.toggleClass("black");
+ jQuery("body").append(img);
 }
 
 function addCard(card){
