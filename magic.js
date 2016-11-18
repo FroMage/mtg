@@ -9,6 +9,7 @@ var rares = [], uncommons = [], commons = [], lands = [];
 var rv = document.location.search.substring(1) == "rv";
 var cardsPerPage = 9;
 var addedCards = 0;
+var uint32Max = Math.pow(2, 32);
 
 if(typeof cards !== 'undefined'){
  // collect cards by type
@@ -81,27 +82,36 @@ function addBackPage(){
 }
 
 function makeSet(rare, uncommon, common){
+ var randomArray = new Uint32Array(rare + uncommon + common);
+ window.crypto.getRandomValues(randomArray);
+ var r = 0;
+ 
  // add rares
  for(var c = 0;c < rare; c++){
-  addCard(rares[Math.floor(Math.random() * rares.length)]);
+  addCard(rares[randomArray[r++] % rares.length]);
  }
  // add uncommons
  for(var c = 0;c < uncommon; c++){
+  var x = randomArray[r++];
   // 2ED puts lands in uncommon/common slots
   if(typeof landUncommon !== 'undefined' 
-     && Math.random() < landUncommon)
-    addCard(lands[Math.floor(Math.random() * lands.length)]);
-  else
-    addCard(uncommons[Math.floor(Math.random() * uncommons.length)]);
+     && (x / uint32Max) < landUncommon){
+    addCard(lands[x % lands.length]);
+  }else{
+    addCard(uncommons[x % uncommons.length]);
+  }
  }
  // add commons
  for(var c = 0;c < common; c++){
+  var x = randomArray[r++];
   // 2ED puts lands in uncommon/common slots
   if(typeof landCommon !== 'undefined' 
-     && Math.random() < landCommon)
-    addCard(lands[Math.floor(Math.random() * lands.length)]);
-  else
-    addCard(commons[Math.floor(Math.random() * commons.length)]);
+     && (x / uint32Max) < landCommon){
+    addCard(lands[x % lands.length]);
+  }else{
+    addCard(commons[x % commons.length]);
+  }
+ }
  // see if we need to finish a page
  if(rv){
   addBackPage();
