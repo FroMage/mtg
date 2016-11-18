@@ -50,7 +50,7 @@ function addWhite(){
 function addCard(card){
  var div = jQuery("<span class='image-with-rarity'/>");
  var img = jQuery("<img/>");
- var isBlack = /^(ARN|ATQ|LEG|DRK|FEM)$/.test(setFolder);
+ var isBlack = /^(ARN|ATQ|LEG|DRK|FEM|3EDFR)$/.test(setFolder);
  img.attr("src", setFolder + "/" + card.name + ".jpg");
  if(isBlack)
   img.toggleClass("black");
