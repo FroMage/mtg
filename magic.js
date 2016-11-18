@@ -6,6 +6,9 @@ function extractRepeats(stat){
 }
 
 var rares = [], uncommons = [], commons = [], lands = [];
+var rv = document.location.search.substring(1) == "rv";
+var cardsPerPage = 9;
+var addedCards = 0;
 
 if(typeof cards !== 'undefined'){
  // collect cards by type
@@ -35,6 +38,12 @@ function addBack(){
  jQuery("body").append(img);
 }
 
+function addWhite(){
+ var img = jQuery("<img/>");
+ img.attr("src", "white.jpg");
+ jQuery("body").append(img);
+}
+
 function addCard(card){
  var img = jQuery("<img/>");
  var isBlack = /^(ARN|ATQ|LEG|DRK|FEM)$/.test(setFolder);
@@ -43,6 +52,32 @@ function addCard(card){
   img.toggleClass("black");
  img.attr("title", card.name);
  jQuery("body").append(img);
+ 
+ if(rv && ++addedCards == cardsPerPage){
+   addBackPage();
+ }
+}
+
+function addBackPage(){
+ // end the page
+ for(var c = addedCards;c < cardsPerPage; c++){
+  addWhite();
+ }
+ // now the backs, but the last row has to be right-aligned
+ var entireLines = Math.floor(addedCards / 3);
+ for(var c = 0;c < (entireLines * 3); c++){
+  addBack();
+ }
+ var lastLine = addedCards % 3;
+ if(lastLine > 0){
+	for(var c = 0;c < (3-lastLine); c++){
+		addWhite();
+	}
+	for(var c = 0;c < lastLine; c++){
+		addBack();
+	}
+ }
+ addedCards = 0;
 }
 
 function makeSet(rare, uncommon, common){
@@ -67,5 +102,8 @@ function makeSet(rare, uncommon, common){
     addCard(lands[Math.floor(Math.random() * lands.length)]);
   else
     addCard(commons[Math.floor(Math.random() * commons.length)]);
+ // see if we need to finish a page
+ if(rv){
+  addBackPage();
  }
 }
