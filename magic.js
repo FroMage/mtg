@@ -104,9 +104,15 @@ function makeSet(rare, uncommon, common){
  window.crypto.getRandomValues(randomArray);
  var r = 0;
  
+ var statRares = 0;
+ var statUncommons = 0;
+ var statCommons = 0;
+ var statLands = 0;
+ 
  // add rares
  for(var c = 0;c < rare; c++){
   addCard(rares[randomArray[r++] % rares.length]);
+  statRares++;
  }
  // add uncommons
  for(var c = 0;c < uncommon; c++){
@@ -114,8 +120,10 @@ function makeSet(rare, uncommon, common){
   // 2ED puts lands in uncommon/common slots
   if(typeof landUncommon !== 'undefined' 
      && (x / uint32Max) < landUncommon){
+    statLands++;
     addCard(lands[x % lands.length]);
   }else{
+    statUncommons++;
     addCard(uncommons[x % uncommons.length]);
   }
  }
@@ -125,11 +133,17 @@ function makeSet(rare, uncommon, common){
   // 2ED puts lands in uncommon/common slots
   if(typeof landCommon !== 'undefined' 
      && (x / uint32Max) < landCommon){
+	statLands++;  
     addCard(lands[x % lands.length]);
   }else{
+	statCommons++;
     addCard(commons[x % commons.length]);
   }
  }
+ console.log("Lands: "+statLands);
+ console.log("Rares: "+statRares);
+ console.log("Uncommons: "+statUncommons);
+ console.log("Commons: "+statCommons);
  // see if we need to finish a page
  if(rv){
   addBackPage();
