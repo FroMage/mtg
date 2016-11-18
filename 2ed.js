@@ -321,3 +321,4 @@ var starterUncommon = 13;
 var starterCommon = 45;
 
 var setFolder = "2ED";
+var setSymbol = "u";

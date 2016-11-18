@@ -20,6 +20,50 @@ img {
  margin: 0.5px;
 }
 
+.rarity {
+ position: absolute;
+ right: 14px;
+ top: -110px;
+ font-size: 8pt;
+ text-shadow: 0.5px 0.5px 0.5px black;
+ writing-mode: tb-rl;
+ height: 50px;
+}
+
+.symbol {
+    position: absolute;
+    right: 16px;
+    bottom: 130px;
+    font-size: 10pt;
+    text-shadow: 0.5px 0.5px 0.5px black;
+    box-shadow: 0.5px 0.5 0.5px black;
+    border: 1px black solid;
+    width: 10px;
+    text-align: center;
+    height: 10px;
+    line-height: 7px;
+}
+
+.r {
+ color: #EFD55B;
+ border-color: #EFD55B;
+}
+
+.u {
+ color: #bbeeff;
+ border-color: #bbeeff;
+}
+
+.c {
+ color: white;
+ border-color: white;
+}
+
+
+span.image-with-rarity {
+ position: relative;
+}
+
 img.black {
  border-color: black;
 }

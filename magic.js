@@ -15,6 +15,8 @@ if(typeof cards !== 'undefined'){
  // collect cards by type
  for (var i = 0; i < cards.length; i++) {
   var card = cards[i];
+  // save its number
+  card.index = i;
   var repeats = extractRepeats(card.stat);
   var destination;
   if(card.stat.indexOf("r") == 0){
@@ -46,14 +48,30 @@ function addWhite(){
 }
 
 function addCard(card){
+ var div = jQuery("<span class='image-with-rarity'/>");
  var img = jQuery("<img/>");
  var isBlack = /^(ARN|ATQ|LEG|DRK|FEM)$/.test(setFolder);
  img.attr("src", setFolder + "/" + card.name + ".jpg");
  if(isBlack)
   img.toggleClass("black");
  img.attr("title", card.name);
- jQuery("body").append(img);
+ div.append(img);
  
+ var rarity = jQuery("<span/>");
+ rarity.addClass("rarity");
+ rarity.addClass(card.stat.substring(0,1));
+ rarity.text((card.index+1)+"/"+cards.length+" "+card.stat);
+ div.append(rarity);
+
+ if(typeof(setSymbol) !== 'undefined'){
+	 var symbol = jQuery("<span/>");
+	 symbol.addClass("symbol");
+	 symbol.addClass(card.stat.substring(0,1));
+	 symbol.text(setSymbol);
+	 div.append(symbol);
+ }
+
+ jQuery("body").append(div);
  if(rv && ++addedCards == cardsPerPage){
    addBackPage();
  }
